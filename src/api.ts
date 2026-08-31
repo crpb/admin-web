@@ -289,8 +289,10 @@ export async function dns(domainId: number) {
   return await get('/domains/' + domainId + '/dnsCheck');
 }
 
-export async function dkimKeygen(domainId: number, settings: { type: string, selector?: string }) {
-  return await post('/domains/' + domainId + '/generateDkimKeys', settings);
+export function dkimKeygen(domainId: number, settings: { type: string, mode: string; selector?: string }) {
+  return async () => {
+    return await post('/domains/' + domainId + '/generateDkimKeys', settings);
+  }
 }
 
 /*

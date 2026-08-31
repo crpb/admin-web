@@ -9,7 +9,7 @@ import {
   URLParams,
   DRAWER_DOMAINS_REVEICED,
 } from './types';
-import { domains, addDomain, editDomain, deleteDomain, domain, defaultSyncPolicy, dns, drawerDomains, disabledPlugins, editDomainPlugins } from '../api';
+import { domains, addDomain, editDomain, deleteDomain, domain, defaultSyncPolicy, dns, drawerDomains, disabledPlugins, editDomainPlugins, dkimKeygen } from '../api';
 import { defaultDeleteHandler, defaultDetailsHandler, defaultListHandler2, defaultPatchHandler, defaultPostHandler } from './handlers';
 import { Dispatch } from 'redux';
 import { CreateDomainParams, DeleteDomainProps, NewDomain, UpdateDomain } from '@/types/domains';
@@ -79,4 +79,8 @@ export function fetchDnsCheckData(domainID: number) {
       return Promise.reject(message);
     }
   };
+}
+
+export function createDkimKeypair(domainId: number, settings: { type: string, mode: string; selector?: string }) {
+  return defaultPostHandler(dkimKeygen, null, domainId, settings);
 }

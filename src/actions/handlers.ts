@@ -43,11 +43,11 @@ export function defaultListHandler2(endpoint: Endpoint, receivedActionType: stri
   };
 }
 
-export function defaultPostHandler(endpoint: Endpoint, addActionType: string, ...endpointParams: any[]) {
+export function defaultPostHandler(endpoint: Endpoint, addActionType: string | null, ...endpointParams: any[]) {
   return async (dispatch: Dispatch)  => {
     try {
       const resp = await dispatch(endpoint(...endpointParams));
-      if(resp) dispatch({ type: addActionType, data: resp });
+      if(resp && addActionType) dispatch({ type: addActionType, data: resp });
       return Promise.resolve(resp);
     } catch(error) {
       const message = (error as ApiError).message;

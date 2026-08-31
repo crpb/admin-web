@@ -5,10 +5,12 @@ import React, { useState } from 'react';
 import { makeStyles } from 'tss-react/mui';
 import { Button, CircularProgress, Dialog, DialogContent, DialogTitle, Divider, MenuItem, TextField, Theme, Typography } from '@mui/material';
 import { useTranslation } from 'react-i18next';
-import { dkimKeygen } from '../../../api';
 import { copyToClipboard } from '../../../utils';
 import { Check, CopyAll, WarningAmber } from '@mui/icons-material';
-import { BaseDomain } from '@/types/domains';
+import { BaseDomain } from '../../../types/domains';
+import { createDkimKeypair } from '../../../actions/domains';
+import { useAppDispatch } from '../../../store';
+import Feedback from '../../../components/Feedback';
 
 
 const useStyles = makeStyles()((theme: Theme) => ({
@@ -54,19 +56,23 @@ systemctl restart postfix
 `;
 
 function GenerateDkimKeys({ open, onClose, domain }: GenerateDkimKeysProps) {
+  const dispatch = useAppDispatch();
   const { classes } = useStyles();
   const { t } = useTranslation();
   const [pubKey, setPubkey] = useState("");
   const [type, setType] = useState("rsa");
+  const [mode, setMode] = useState("dns");
   const [selector, setSelector] = useState("");
   const [loading, setLoading] = useState(false);
   const [keyCopied, setKeyCopied] = useState(false);
   const [commandsCopied, setCommandsCopied] = useState(false);
+  const [snackbar, setSnackbar] = useState("");
 
   const handleKeygen = async () => {
     setKeyCopied(false);
     setLoading(true);
-    const key = await dkimKeygen(domain.ID, { type, selector: selector || undefined });
+    const key = await dispatch(createDkimKeypair(domain.ID, { type, mode, selector: selector || undefined }))
+      .catch((err) => setSnackbar(err));
     setPubkey(key);
     setLoading(false);
   }
@@ -88,6 +94,7 @@ function GenerateDkimKeys({ open, onClose, domain }: GenerateDkimKeysProps) {
     setLoading(false);
     setType("rsa");
     setSelector("");
+    setMode("dns");
   }
 
   return (
@@ -104,6 +111,18 @@ function GenerateDkimKeys({ open, onClose, domain }: GenerateDkimKeysProps) {
           >
             <MenuItem value="rsa">rsa</MenuItem>
             <MenuItem value="ed25519">ed25519</MenuItem>
+          </TextField>
+          <TextField
+            label={t("Output mode")}
+            value={mode}
+            onChange={e => setMode(e.target.value)}
+            fullWidth
+            sx={{ mt: 1 }}
+            select
+          >
+            <MenuItem value="dns">dns</MenuItem>
+            <MenuItem value="dnskey">dnskey</MenuItem>
+            <MenuItem value="plain">plain</MenuItem>
           </TextField>
           <TextField
             label={t("selector")}
@@ -126,6 +145,7 @@ function GenerateDkimKeys({ open, onClose, domain }: GenerateDkimKeysProps) {
           </div>
         </div>
         <Divider className={classes.divider}/>
+        {pubKey && <Typography sx={{ mb: 0.5, fontWeight: 700 }}>Public key:</Typography>}
         <pre>
           {pubKey}
         </pre>
@@ -180,6 +200,10 @@ function GenerateDkimKeys({ open, onClose, domain }: GenerateDkimKeysProps) {
           </Button>
         </div>}
       </DialogContent>
+      <Feedback
+        snackbar={snackbar}
+        onClose={() => setSnackbar("")}
+      />
     </Dialog>
   );
 }
