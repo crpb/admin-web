@@ -18,6 +18,8 @@ const useStyles = makeStyles()((theme: Theme) => ({
   paper: {
     paddingTop: 1,
     display: 'flex',
+    backgroundColor: theme.palette.mode === 'light' ? '#f3f3f399' : '#121315aa',
+
   },
 }));
 
@@ -54,6 +56,13 @@ function Load() {
             },
             dataLabels: {
               formatter: formatValue,
+              offsetX:5,
+              style: {
+                colors: [theme.palette.mode === 'light' ? '#000000' : '#ffffff']
+              },
+              dropShadow: {
+                enabled: false,
+              },
             },
             legend: {
               show: false,
@@ -86,7 +95,7 @@ function Load() {
                 }
               },
             },
-            colors: ['#2E93fA', '#546E7A', '#E91E63', '#FF9800', '#8e9eab', '#66DA26'],
+            colors: ['#5b8fd0', '#546E7A', '#b83e6a', '#e0a458', '#8e9eab', '#5cb85c'],
           }}
           series={[{
             data: load

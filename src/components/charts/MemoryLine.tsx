@@ -68,7 +68,8 @@ function MemoryLine() {
             },
           },
           stroke: {
-            curve: 'smooth'
+            width: 1.5,
+            curve: 'smooth',
           },
           tooltip: {
             x: {
@@ -81,10 +82,18 @@ function MemoryLine() {
           dataLabels: {
             enabled: false
           },
-          colors: ['#546E7A', '#FF9800', '#E91E63'],
+          colors: ['#546E7A', '#e0a458', '#b83e6a'],
           legend: {
             labels: {
               colors: theme.palette.text.primary,
+            },
+            markers: {
+             size: 6,       
+             strokeWidth: 0,
+             offsetX: -2,
+            },
+            itemMargin: {
+              horizontal: 6,    // space between whole legend items (icon+text pairs)
             },
           }
         }}

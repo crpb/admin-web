@@ -51,6 +51,10 @@ function Disks({ disks }: DisksProps) {
           },
           dataLabels: {
             enabled: true,
+            offsetX:5,
+            style: {
+              colors: [theme.palette.mode === 'light' ? '#000000' : '#ffffff']
+            },
             formatter: function(_, { dataPointIndex: i }) {
               return (disks[i].used / 1000000000).toFixed(1) + "GB";
             },
@@ -93,7 +97,7 @@ function Disks({ disks }: DisksProps) {
               }
             },
           },
-          colors: ['#2E93fA', '#546E7A', '#E91E63', '#FF9800', '#8e9eab', '#66DA26'],
+          colors: ['#5b8fd0', '#546E7A', '#b83e6a', '#e0a458', '#8e9eab', '#5cb85c'],
         }}
         series={[{
           data: disks.map(d => d.percent)

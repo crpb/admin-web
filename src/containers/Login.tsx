@@ -47,27 +47,38 @@ const useStyles = makeStyles()((theme: Theme) => ({
     flexDirection: 'column',
     flex: 1,
     maxWidth: 450,
-    background: 'rgba(250, 250, 250, 0.9)',
-    borderRadius: 30,
+    minHeight: 350,
+    background: 'rgba(250, 250, 250, 0.84)',
+    borderRadius: 25,
     zIndex: 1,
     padding: theme.spacing(1, 0),
     position: 'relative',
+    justifyContent: 'center',
+
   },
   logoContainer: {
     display: 'flex',
     justifyContent: 'center',
-    margin: theme.spacing(1, 0),
+    //margin: theme.spacing(1, 0),
+  margin: theme.spacing(2, 2, 4, 2),
   },
   button: {
     width: '100%',
-    borderRadius: 10,
+    backgroundImage: 'none',
+    backgroundColor: '#0f70bd',
+    '&:hover': {
+      backgroundColor: '#0d5ea0', // slightly darker on hover
+    },
   },
   inputContainer: {
     display: 'flex',
-    alignItems: 'Center',
-    maxWidth: '100%',
-    borderRadius: 10,
-    margin: theme.spacing(1, 2, 1, 2),
+    alignItems: 'center',
+    width: '80%',
+    borderRadius: 25,
+    margin: `${theme.spacing(1)} auto`,
+    backgroundColor: [theme.palette.mode === 'light' ? '#ffffff' : '#37393e'],
+    //backgroundColor: '#37393e',
+    boxShadow: 'none',
   },
   input: {
     margin: theme.spacing(1, 1, 1, 0),
@@ -76,7 +87,11 @@ const useStyles = makeStyles()((theme: Theme) => ({
     margin: theme.spacing(1, 1, 1, 1),
   },
   errorMessage: {
-    margin: theme.spacing(1, 2, 0, 2),
+    width: '80%',
+    margin: `${theme.spacing(1)} auto`,
+    borderRadius: 25,
+    boxShadow: 'none',
+    boxSizing: 'border-box',
   },
   logo: {
     padding: 12,
@@ -201,7 +216,7 @@ const Login = () => {
         <div className={classes.logoContainer}>
           <img
             src={config?.logo || logo}
-            height={64}
+            height={52}
             alt="grommunio"
           />
         </div>
@@ -235,7 +250,7 @@ const Login = () => {
             autoComplete="currect-password"
           />
         </Paper>
-        {auth.error && <Alert elevation={6} variant="filled" severity="error" className={classes.errorMessage}>
+        {auth.error && <Alert elevation={0} variant="filled" severity="error" className={classes.errorMessage}>
           {auth.error || t("Failed to login. Incorrect password or username")}
         </Alert>}
         <Paper className={classes.inputContainer}>

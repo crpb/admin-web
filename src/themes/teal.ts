@@ -63,17 +63,20 @@ const tealTheme = (mode: ThemeMode): ThemeOptions => ({
   },
   palette: {
     mode: mode,
-    primary: teal,
+    primary: teal, 
     secondary: grey,
     ...(mode === 'light' ?
       {
         text: {
           primary: mode === 'light' ? '#000' : '#fff',
         },
+        background: {
+          paper: "#f3f3f3a5",
+        }
       } :
       {
         background: {
-          paper: "#121315",
+          paper: "#121315aa",
         }
       }),
   },

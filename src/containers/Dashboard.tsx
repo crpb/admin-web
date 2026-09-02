@@ -103,6 +103,8 @@ const useStyles = makeStyles()((theme: Theme) => ({
     [theme.breakpoints.up("sm")]: {
       gridTemplateColumns: '300px 1fr 1fr',
     },
+    backgroundColor: theme.palette.mode === 'light' ? '#f3f3f399' : '#121315aa',
+
   },
   donutChart: {
     [theme.breakpoints.up("xs")]: {
@@ -111,6 +113,7 @@ const useStyles = makeStyles()((theme: Theme) => ({
     [theme.breakpoints.up("sm")]: {
       gridColumn: '1 / 2',
     },
+
   },
   lineChart: {
     display: 'flex',
@@ -120,6 +123,7 @@ const useStyles = makeStyles()((theme: Theme) => ({
     [theme.breakpoints.up("sm")]: {
       gridColumn: '2 / 4',
     },   
+
   },
   fullChart: {
     display: 'flex',
@@ -129,6 +133,7 @@ const useStyles = makeStyles()((theme: Theme) => ({
     [theme.breakpoints.up("sm")]: {
       gridColumn: '1 / 4',
     },  
+
   },
   toolbar: {
     ...theme.mixins.toolbar as CSSObject,

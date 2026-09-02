@@ -60,6 +60,14 @@ function MemoryPie() {
             labels: {
               colors: theme.palette.text.primary,
             },
+             markers: {
+              size: 6,       
+              strokeWidth: 0,
+              offsetX: -2,
+            },
+            itemMargin: {
+              horizontal: 6,    // space between whole legend items (icon+text pairs)
+            },
           },
           tooltip: {
             enabled: false,
@@ -69,6 +77,10 @@ function MemoryPie() {
               expandOnClick: false,
             },
           },
+          stroke: {
+            show: false,
+          },
+
           states: {
             hover: {
               filter: {
@@ -78,19 +90,25 @@ function MemoryPie() {
           },
           dataLabels: {
             style: {
-              colors: ['#000']
+            colors: ['#ffffff'],
             },
             dropShadow: {
               enabled: false,
             },
             background: {
-              borderRadius: 6,
+              borderRadius: 3,
+              borderWidth: 0,
               opacity: 0.8,
-              enabled: theme.palette.mode === 'dark',
+              enabled: true,
+            dropShadow: {
+              enabled: true,
+            },
+              foreColor: '#000000',
             },
           },
-          colors: ['#546E7A', '#E91E63', '#FF9800', '#66DA26'],
-        }}
+          colors: ['#546E7A', '#b83e6a', '#e0a458', '#5cb85c'],
+        }
+      }
         series={memoryPie.values}
         type="pie"
         width={268}

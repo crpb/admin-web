@@ -8,7 +8,6 @@ import { useTranslation } from 'react-i18next';
 import { Theme, useTheme } from '@mui/material';
 import { useAppSelector } from '../../store';
 
-
 const useStyles = makeStyles()((theme: Theme) => ({
   root: {
     flex: 1,
@@ -60,6 +59,9 @@ function CPUPie() {
               expandOnClick: false,
             },
           },
+          stroke: {
+            show: false,
+          },
           states: {
             hover: {
               filter: {
@@ -69,15 +71,20 @@ function CPUPie() {
           },
           dataLabels: {
             style: {
-              colors: ['#000']
+            colors: ['#ffffff'],          
             },
             dropShadow: {
               enabled: false,
             },
             background: {
-              borderRadius: 6,
+              borderRadius: 3,
+              borderWidth: 0,
               opacity: 0.8,
-              enabled: theme.palette.mode === 'dark',
+              enabled: true,
+              dropShadow: {
+                enabled: true,
+              },
+              foreColor: '#000000',
             },
           },
           legend: {
@@ -86,11 +93,19 @@ function CPUPie() {
             labels: {
               colors: theme.palette.text.primary,
             },
+            markers: {
+              size: 6,       
+              strokeWidth: 0,
+              offsetX: -2,
+            },
+            itemMargin: {
+              horizontal: 6,    // space between whole legend items (icon+text pairs)
+            },
           },
           tooltip: {
             enabled: false,
           },
-          colors: ['#2E93fA', '#546E7A', '#FF9800', '#8e9eab', '#E91E63', '#66DA26'],
+          colors: ['#5b8fd0', '#546E7A', '#e0a458', '#8e9eab', '#b83e6a', '#5cb85c'],
         }}
         series={cpuPie.values}
         type="pie"

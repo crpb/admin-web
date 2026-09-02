@@ -36,6 +36,8 @@ const useStyles = makeStyles()((theme: Theme) => ({
     alignItems: 'center',
     justifyContent: 'space-around',
     flexDirection: 'row',
+    backgroundColor: theme.palette.mode === 'light' ? '#f3f3f399' : '#121315aa',
+
   },
   icon: {
     flex: 1,

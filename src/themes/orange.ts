@@ -63,17 +63,20 @@ const orangeTheme = (mode: ThemeMode): ThemeOptions => ({
   },
   palette: {
     mode: mode,
-    primary: orange,
+    primary: orange, 
     secondary: grey,
     ...(mode === 'light' ?
       {
         text: {
           primary: mode === 'light' ? '#000' : '#fff',
         },
+        background: {
+          paper: "#f3f3f3a5",
+        }
       } :
       {
         background: {
-          paper: "#121315",
+          paper: "#121315aa",
         }
       }),
   },

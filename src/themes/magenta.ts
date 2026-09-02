@@ -61,19 +61,22 @@ const magentaTheme = (mode: ThemeMode): ThemeOptions => ({
       color: mode === 'light' ? '#000' : '#fff',
     },
   },
-  palette: {
+ palette: {
     mode: mode,
-    primary: magenta,
+    primary: magenta, 
     secondary: grey,
     ...(mode === 'light' ?
       {
         text: {
           primary: mode === 'light' ? '#000' : '#fff',
         },
+        background: {
+          paper: "#f3f3f3a5",
+        }
       } :
       {
         background: {
-          paper: "#121315",
+          paper: "#121315aa",
         }
       }),
   },

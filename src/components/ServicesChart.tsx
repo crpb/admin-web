@@ -27,6 +27,8 @@ const useStyles = makeStyles()((theme: Theme) => ({
   },
   paper: {
     flex: 1,
+    backgroundColor: theme.palette.mode === 'light' ? '#f3f3f399' : '#121315aa',
+
   },
   servicePaper: {
     display: "flex",
@@ -59,32 +61,38 @@ const useStyles = makeStyles()((theme: Theme) => ({
   },
   label: {
     padding: '2px 4px',
-    borderRadius: 25,
+    borderRadius: 8,
     maxWidth: 80,
     margin: 0,
     textAlign: 'center',
     fontSize: 12,
   },
   active: {
-    color: "#fff",
-    background: "linear-gradient(150deg, #56ab2f, #a8e063)",
+    color: "white",
+    background: "linear-gradient(150deg, #5cb85c, #3d8b40)",
+
   },
   error: {
-    color: "#fff",
+    color: "white",
     fontWeight: "bold",
-    background: "linear-gradient(150deg, #FF512F, #DD2476)",
+    background: "linear-gradient(150deg, #e0555f, #b83e6a)",
+
   },
   inactive: {
     color: "white",
-    background: "linear-gradient(150deg, #000000, #434343)",
+    background: "linear-gradient(150deg, #5a5a5a, #3a3a3a)",
+
   },
   failed: {
-    background: "linear-gradient(150deg, #FF512F, #DD2476)",
+    color: "white",
+    background: "linear-gradient(150deg, #e0555f, #b83e6a)",
   },
   activating: {
-    background: "linear-gradient(150deg, #FFB75E, #ED8F03)",
+    color: "white",
+    background: "linear-gradient(150deg, #e0a458, #c98a2e)",
   },
   deactivating: {
+    color: "white",
     background: "linear-gradient(150deg, #F2F2F2, #EAEAEA)",
   },
   legendContainer: {

@@ -6,6 +6,7 @@ const defaultStyles = (mode: ThemeMode) => ({
     styleOverrides: {
       root: {
         color: mode === 'light' ? '#333' : '#fff',
+        //backgroundColor: '#ffffff', 
       },
     },
   },
@@ -21,9 +22,12 @@ const defaultStyles = (mode: ThemeMode) => ({
       root: {
         backgroundImage: 'none',
         overflow: 'hidden',
-        boxShadow: "none",
         borderRadius: 4,
-        border: "1px solid " + (mode === 'light' ? '#d1d1d1' : '#d6d6d6'),
+        border: '1px solid ' + (mode === 'light' ? 'rgba(15, 23, 42, 0.08)' : 'rgba(255, 255, 255, 0.08)'),
+        boxShadow: mode === 'light'
+          ? '0 1px 2px rgba(15, 23, 42, 0.04), 0 4px 14px rgba(15, 23, 42, 0.05)'
+          : '0 1px 2px rgba(0, 0, 0, 0.24), 0 4px 14px rgba(0, 0, 0, 0.28)',
+        transition: 'box-shadow 0.2s ease',
       },
       elevation1: {
         borderRadius: 8,
@@ -50,16 +54,17 @@ const defaultStyles = (mode: ThemeMode) => ({
     },
   },
   MuiTableRow: {
-    styleOverrides: {
+     styleOverrides: {
       hover: {
         '&:hover': {
-          backgroundColor: '#ddd',
+          backgroundColor: mode === 'light' ? 'rgba(15, 23, 42, 0.04)' : 'rgba(255, 255, 255, 0.06)',
           cursor: 'pointer',
         },
       },
       root: {
+        transition: 'background-color 0.12s ease',
         '&:nth-of-type(even)': {
-          backgroundColor: mode === 'light' ? '#eee' : '#202329',
+          backgroundColor: mode === 'light' ? 'rgba(15, 23, 42, 0.02)' : 'rgba(255, 255, 255, 0.03)',
         },
       },
     },

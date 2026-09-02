@@ -33,6 +33,7 @@ function getThemeFromName(name: ColorThemeName): ThemeFactory {
   case 'orange': return orangeTheme;
   case 'brown': return brownTheme;
   case 'bluegrey': return blueGreyTheme;
+
   default: return grommunioTheme;
   }
 }

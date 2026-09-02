@@ -56,6 +56,14 @@ function CPULine() {
             labels: {
               colors: theme.palette.text.primary,
             },
+            markers: {
+              size: 6,       
+              strokeWidth: 0,
+              offsetX: -2,
+            },
+            itemMargin: {
+              horizontal: 6,    // space between whole legend items (icon+text pairs)
+            },
           },
           yaxis: {
             min: 0,
@@ -73,7 +81,11 @@ function CPULine() {
               show: false,
             },
           },
-          colors: ['#FF9800', '#8e9eab', '#E91E63', '#546E7A', '#2E93fA'],
+          stroke: {
+            width: 1.5,
+            curve: 'smooth',
+          },
+          colors: ['#e0a458', '#8e9eab', '#b83e6a', '#546E7A', '#5b8fd0'],
         }}
         series={[{
           name: t("Interrupt"),
