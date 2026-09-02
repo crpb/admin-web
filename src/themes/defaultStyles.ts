@@ -54,7 +54,7 @@ const defaultStyles = (mode: ThemeMode) => ({
     },
   },
   MuiTableRow: {
-     styleOverrides: {
+    styleOverrides: {
       hover: {
         '&:hover': {
           backgroundColor: mode === 'light' ? 'rgba(15, 23, 42, 0.04)' : 'rgba(255, 255, 255, 0.06)',

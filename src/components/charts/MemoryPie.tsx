@@ -60,7 +60,7 @@ function MemoryPie() {
             labels: {
               colors: theme.palette.text.primary,
             },
-             markers: {
+            markers: {
               size: 6,       
               strokeWidth: 0,
               offsetX: -2,
@@ -90,7 +90,7 @@ function MemoryPie() {
           },
           dataLabels: {
             style: {
-            colors: ['#ffffff'],
+              colors: ['#ffffff'],
             },
             dropShadow: {
               enabled: false,
@@ -100,15 +100,15 @@ function MemoryPie() {
               borderWidth: 0,
               opacity: 0.8,
               enabled: true,
-            dropShadow: {
-              enabled: true,
-            },
+              dropShadow: {
+                enabled: true,
+              },
               foreColor: '#000000',
             },
           },
           colors: ['#546E7A', '#b83e6a', '#e0a458', '#5cb85c'],
         }
-      }
+        }
         series={memoryPie.values}
         type="pie"
         width={268}

@@ -61,7 +61,7 @@ const magentaTheme = (mode: ThemeMode): ThemeOptions => ({
       color: mode === 'light' ? '#000' : '#fff',
     },
   },
- palette: {
+  palette: {
     mode: mode,
     primary: magenta, 
     secondary: grey,

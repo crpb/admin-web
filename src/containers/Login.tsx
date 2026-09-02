@@ -59,8 +59,7 @@ const useStyles = makeStyles()((theme: Theme) => ({
   logoContainer: {
     display: 'flex',
     justifyContent: 'center',
-    //margin: theme.spacing(1, 0),
-  margin: theme.spacing(2, 2, 4, 2),
+    margin: theme.spacing(2, 2, 4, 2),
   },
   button: {
     width: '100%',

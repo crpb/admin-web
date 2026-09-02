@@ -88,9 +88,9 @@ function MemoryLine() {
               colors: theme.palette.text.primary,
             },
             markers: {
-             size: 6,       
-             strokeWidth: 0,
-             offsetX: -2,
+              size: 6,       
+              strokeWidth: 0,
+              offsetX: -2,
             },
             itemMargin: {
               horizontal: 6,    // space between whole legend items (icon+text pairs)

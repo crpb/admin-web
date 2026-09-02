@@ -71,7 +71,7 @@ function CPUPie() {
           },
           dataLabels: {
             style: {
-            colors: ['#ffffff'],          
+              colors: ['#ffffff'],          
             },
             dropShadow: {
               enabled: false,
